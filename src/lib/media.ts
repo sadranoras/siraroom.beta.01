@@ -27,20 +27,8 @@ export function useLocalMedia() {
     }
     try {
       const s = await navigator.mediaDevices.getUserMedia({
-        video: video ? {
-          width: { ideal: 1920 },
-          height: { ideal: 1080 },
-          frameRate: { ideal: 60, min: 30 },
-          facingMode: 'user',
-        } : false,
-        audio: audio ? {
-          echoCancellation: true,
-          noiseSuppression: true,
-          autoGainControl: true,
-          channelCount: 2,
-          sampleRate: 48000,
-          sampleSize: 16,
-        } : false,
+        video: video ? { width: { ideal: 1280 }, height: { ideal: 720 }, facingMode: 'user' } : false,
+        audio: audio ? { echoCancellation: true, noiseSuppression: true, autoGainControl: true } : false,
       });
       if (existing) {
         // Merge new tracks into a NEW MediaStream wrapping all tracks.
